@@ -20,17 +20,19 @@ const quoteSelection = [
 
 // Random quote generator
 
+let lastQuote
+
 const generateQuote = () => {
     let randomNum;
-    let quote;
+    let newQuote;
     
-    randomNum = Math.floor(Math.random() * quoteSelection.length);
-    quote = quoteSelection[randomNum];
+    do {
+        randomNum = Math.floor(Math.random() * quoteSelection.length);
+        newQuote = quoteSelection[randomNum];
+    } while (newQuote === lastQuote);
 
-    document.getElementById('quote-display').innerText = quote
-
+    document.getElementById('quote-display').innerText = newQuote;
+    lastQuote = newQuote
 };
 
-
 document.getElementById('generate-quote-button').addEventListener('click', generateQuote);
-
