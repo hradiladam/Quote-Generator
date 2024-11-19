@@ -31,8 +31,11 @@ const generateQuote = () => {
         newQuote = quoteSelection[randomNum];
     } while (newQuote === lastQuote);
 
-    document.getElementById('quote-display').innerText = newQuote;
+    const [author, quote] = newQuote.split(': ');
+
+    document.getElementById('quote-display').innerHTML = `<span class="author">${author}</span>: <span class="quote">${quote}</span>`;
     lastQuote = newQuote
 };
+
 
 document.getElementById('generate-quote-button').addEventListener('click', generateQuote);
