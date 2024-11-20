@@ -11,15 +11,17 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #202020;
+    background-color: #eeeeee;
+    color: #333;
+    position: relative;
 }
 
 /* Main container for the content */
 .quote-container {
-    background: #fafafa;
+    background: #e6e4e4;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 3px #f0f6f7;
+    box-shadow: 0 0 3px #a1a1a1;
     max-width: 1200px;
     width: 100%;
     text-align: center;
@@ -33,7 +35,7 @@ body {
 .quote-container h1 {
     font-weight: bold;
     font-size: 2.2rem;
-    color: #0c0c0c;
+    color: #2c3e50;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
 }
@@ -42,7 +44,7 @@ body {
 #quote-display {
     font-size: 1.4rem;
     font-style: italic;
-    color: #141414;
+    color: #1d1d1d;
     margin-bottom: 2rem;
     line-height: 1.5;
     min-height: 70px;
@@ -53,11 +55,12 @@ body {
     font-weight: 800;
     line-height: 1.5;
     margin-top: 0.5rem;
+    color: #2c3e50;
 }
 
 /* Button styling */
 #generate-quote-button {
-    background-color: #24aa72;
+    background-color: #3498db;
     color: white;
     font-size: 1.5rem;
     padding: 12px 24px;
@@ -69,34 +72,102 @@ body {
 
 /* Button hover effect */
 #generate-quote-button:hover {
-    background-color: #19744e;
+    background-color: #2980b9;
 }
 
 /* Button active effect */
 #generate-quote-button:active {
-    background-color: #19744e;
+    background-color: #2980b9;
     transform: scale(0.98);
 }
 
+/* Styling of the change theme button  */
+input {
+    display: none;
+}
 
-
-
-/* Chenge theme button styling, not functional, for future update
-
-#change-theme {
+#theme-switch {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-    background-color: #838383;
-    color: white;
-    font-size: 0.5rem;
-    border: none;
-    padding: 2px;
+    width: 4rem;
+    height: 2rem;
     cursor: pointer;
-    min-height: 1.5rem;
-    min-width: 1.5rem;
-    clip-path: circle(50%);
 }
 
-  */
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #757474;
+    border-radius: 50px;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
 
+.slider:before {
+    content: "";
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+}
+
+input:checked + .slider {
+    background-color: #008ce9;
+}
+
+input:checked + .slider:before {
+    transform: translateX(2rem);
+}
+
+
+/* dark theme styles */
+
+body.dark-theme {
+    background-color: #242424;
+    color: #f5f5f5;  
+}
+
+body.dark-theme .quote-container {
+    background: #131313;
+}
+
+body.dark-theme h1 {
+    color: #eeeeee
+}
+
+body.dark-theme #quote-display {
+    color: #dbdbdb;
+}
+
+body.dark-theme .author {
+    color: #e9eaeb;
+}
+
+body.dark-theme #generate-quote-button {
+    background-color: #284d6e;
+    color: #eeeeee;
+}
+
+body.dark-theme #generate-quote-button:hover {
+    background-color: #264b64;
+}
+
+body.dark-theme #generate-quote-button:active {
+    background-color: #23445a;
+    transform: scale(0.98);
+}
+
+body.dark-theme .slider {
+    background-color: #7f8c8d;
+}
+
+body.dark-theme .slider:before {
+    background-color: #ecf0f1;
+}

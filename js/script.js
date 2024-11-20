@@ -43,15 +43,14 @@ const fetchData = async () => {
     } catch (error) {
         console.error('There was a problem fetching data:', error);
     }
-}
-
+};
 
 fetchData();
 
 
 // Random quote generator
 
-let lastQuote
+let lastQuote;
 
 const generateQuote = () => {
     let randomNum;
@@ -68,3 +67,19 @@ const generateQuote = () => {
 
 
 document.getElementById('generate-quote-button').addEventListener('click', generateQuote);
+
+
+// Change theme to dark theme
+
+const switchTheme = () => {
+    const body = document.body;
+    const themeSwitchCheckbox = document.querySelector('#theme-switch input');
+
+    if (themeSwitchCheckbox.checked ) {
+        body.classList.add('dark-theme');
+    } else {
+        body.classList.remove('dark-theme');
+    }
+};
+
+document.getElementById('theme-switch').addEventListener('change', switchTheme);
