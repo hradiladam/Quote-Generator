@@ -3,10 +3,10 @@ let selectionOfQuotes = [];
 /*
 Prepares import of quotes from a txt file,
 normalizes curly quotes into straight quotes,
-filteres away lines that initially do not include a colon,
 splits the text into author and quote, 
 trims whitespaces around author and quote,
-adds the colon (:) back to author,  
+adds the colon (:) back to author,
+filteres away lines that initially do not include a colon,  
 */
 
 const fetchData = async () => {
@@ -16,10 +16,11 @@ const fetchData = async () => {
             throw new Error ('Response was not ok. Please check the file path.');
         }
 
-        const data = await response.text();
-        const normalizedData = data.replace(/[\u2018\u2019\u201C\u201D]/g, '"');
+        let normalizedData = (await response.text())
+            .replace(/[\u201C\u201D]/g, '"')
+            .replace(/[\u2018\u2019]/g, "'");
 
-        selectionOfQuotes = normalizedData.split('\n').map((line) => {
+        selectionOfQuotes = normalizedData.split('\n').map(line => {
 
             if (line.includes(':')) {
                 let [author, quote] = line.split(':');
@@ -27,19 +28,15 @@ const fetchData = async () => {
                 author = author.trim();
                 quote = quote.trim();
 
-                if (!quote.startsWith('"')) {
-                    quote = `"${quote}`;
-                }
-                if (!quote.endsWith('"')) {
-                    quote = `${quote}"`;
-                }
+                quote = quote.startsWith('"') ? quote : `"${quote}`;
+                quote = quote.endsWith('"') ? quote : `${quote}"`;
 
                 author = `${author}:`; 
                 return {author, quote};
             }
             return null;
 
-        }).filter((item) => item !== null); 
+        }).filter(item => item !== null); 
 
         console.log(selectionOfQuotes);
 
