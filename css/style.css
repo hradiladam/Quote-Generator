@@ -151,12 +151,12 @@ body.dark-theme .author {
 }
 
 body.dark-theme #generate-quote-button {
-    background-color: #284d6e;
+    background-color: #335f85;
     color: #eeeeee;
 }
 
 body.dark-theme #generate-quote-button:hover {
-    background-color: #264b64;
+    background-color: #3c7296;
 }
 
 body.dark-theme #generate-quote-button:active {
