@@ -11,17 +11,17 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #eeeeee;
+    background-color: #f8f6f6;
     color: #333;
     position: relative;
 }
 
 /* Main container for the content */
 .quote-container {
-    background: #e6e4e4;
+    background: #e4e4e4;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 3px #a1a1a1;
+    box-shadow: 0 0 3px #505050;
     max-width: 1200px;
     width: 100%;
     text-align: center;
