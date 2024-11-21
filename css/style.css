@@ -171,3 +171,111 @@ body.dark-theme .slider {
 body.dark-theme .slider:before {
     background-color: #ecf0f1;
 }
+
+/* tablet styling */ 
+
+@media (max-width: 1024px) {
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 5rem;
+    }
+
+    .quote-container {
+        padding: 1.8rem;
+        max-width: 800px;
+    }
+
+    .quote-container h1 {
+        font-size: 1.7rem;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    #quote-display {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #generate-quote-button {
+        font-size: 1.4rem;
+        padding: 10px 20px;
+    }
+
+    #theme-switch {
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
+
+/* phone in landscape styling */ 
+
+@media (max-width: 767px) and (min-width: 600px) {
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2rem;
+    }
+
+    .quote-container {
+        padding: 1rem;
+        max-width: 700px;
+    }
+
+    .quote-container h1 {
+        font-size: 1.6rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.8rem;
+    }
+
+    #quote-display {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    #generate-quote-button {
+        font-size: 1.3rem;
+        padding: 8px 16px;
+    }
+
+    #theme-switch {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+
+/* phone styling */ 
+
+@media (max-width: 599px) {
+
+    body {
+        padding: 15px;
+    }
+    .quote-container {
+        padding: 1rem;
+    }
+
+    .quote-container h1 {
+        font-size: 1.3rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #quote-display {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    #generate-quote-button {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+
+    #theme-switch {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
