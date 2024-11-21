@@ -20,7 +20,7 @@ const fetchData = async () => {
         }
         
         let normalizedData = (await response.text())
-            .replace(/[\u201C\u201D]/g, '"'); // normalize curly double quotes
+            .replace(/[\u201C\u201D]/g, '"') // normalize curly double quotes
             .replace(/[\u2018\u2019]/g, "'"); // normalize curly single quotes
 
         selectionOfQuotes = normalizedData.split('\n').map(line => { // split data into lines and process each line
