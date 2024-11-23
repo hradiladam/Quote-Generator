@@ -211,7 +211,7 @@ body.dark-theme .slider:before {
 
 /* phone in landscape styling */ 
 
-@media (max-width: 767px) and (min-width: 600px) {
+@media (max-width: 767px) and (min-width: 600px) and (orientation: landscape) {
 
     body {
         flex-direction: column;
@@ -241,7 +241,8 @@ body.dark-theme .slider:before {
     }
 
     #theme-switch {
-        bottom: 1.5rem;
+        position: absolute;
+        bottom: 2.5rem;
         right: 1.5rem;
     }
 }
@@ -276,7 +277,8 @@ body.dark-theme .slider:before {
     }
 
     #theme-switch {
-        bottom: 1rem;
+        position: absolute;
+        bottom: 3.5rem;
         right: 1rem;
     }
 }
