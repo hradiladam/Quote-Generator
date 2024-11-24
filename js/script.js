@@ -23,7 +23,9 @@ const fetchData = async () => {
             .replace(/[\u201C\u201D]/g, '"') // normalize curly double quotes
             .replace(/[\u2018\u2019]/g, "'"); // normalize curly single quotes
 
-        selectionOfQuotes = normalizedData.split('\n').map(line => { // split data into lines and process each line
+        selectionOfQuotes = normalizedData
+            .split('\n') // split data into lines
+            .map(line => {  // process each line
 
             // only process lines that have a colon
             if (line.includes(':')) {
@@ -57,12 +59,13 @@ fetchData();
 
 
 /*
-generates a random quote and displays it in the quote container
+Generates a random quote and displays it in the quote container
 - ensures the same quote doesn't appear consecutively
+- stored the quote from previous cycle for future use
 */
- 
 
-let lastQuote;
+let lastQuote = null;
+let previousQuote = null;
 
 const generateQuote = () => {
     let randomNum;
@@ -74,6 +77,8 @@ const generateQuote = () => {
         newQuote = selectionOfQuotes[randomNum];
     } while (newQuote === lastQuote);
 
+    previousQuote = lastQuote; // store the quote from previous cycle as previous quote
+
     // display the selected quote in the display container element as 3 span elements (author, whitespace, quote)
     document.getElementById('quote-display').innerHTML = `
     <span class="author">${newQuote.author}</span>
@@ -84,11 +89,32 @@ const generateQuote = () => {
     lastQuote = newQuote // set last quote as the newest quote to prevent repeating
 };
 
-document.getElementById('generate-quote-button').addEventListener('click', generateQuote); // add a click event listener to the generate quote button
+const generateQuoteButton = document.getElementById('generate-quote-button');
+generateQuoteButton.addEventListener('click', generateQuote); // add a click event listener to the generate quote button
 
 
 /*
-toggles between light and dark themes
+Function that displays the previous quote in the quote display
+- goe sonly back one quote to the previous quote
+*/
+
+const showPreviosuQuote = () => {
+    if (previousQuote) {
+        
+        document.getElementById('quote-display').innerHTML = `
+        <span class="author">${previousQuote.author}</span>
+        <span> </span>
+        <span class="quote">${previousQuote.quote}</span>
+        `;
+    }
+};
+
+const previousQuoteButton = document.getElementById('previous-quote-button');
+previousQuoteButton.addEventListener('click', showPreviosuQuote); 
+
+
+/*
+Toggles between light and dark themes
 */
 
 const switchTheme = () => {
@@ -103,4 +129,5 @@ const switchTheme = () => {
     }
 };
 
-document.getElementById('theme-switch').addEventListener('change', switchTheme); // add a change event listener to the switch-theme toggle checkbox
+const switchThemeButton = document.getElementById('theme-switch')
+switchThemeButton.addEventListener('change', switchTheme); // add a change event listener to the switch-theme toggle checkbox

@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/reset.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="./js/script.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="quote-container">
+    <section class="quote-container">
         <h1>Random Quote Generator</h1>
+        
         <!-- Display the generated quote here -->
         <p id="quote-display">Click the button to generate a random quote.</p>
+        
         <!-- Button to trigger the quote generation -->
-        <button id="generate-quote-button">Generate Quote</button>
-    </div>
+        <button id="generate-quote-button" class="quote-buttons">Generate Quote</button>
+
+        <!-- Button to display the previous quote -->
+        <button id="previous-quote-button" class="quote-buttons">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    </section>
+
+    
 
     <!-- Button to trigger dark theme -->
     <label id="theme-switch">
@@ -25,3 +35,4 @@
     </label>
 </body>
 </html>
+
