@@ -73,9 +73,10 @@ body {
 /* previous quote button styling */
 #previous-quote-button {
     position: absolute;
+    color: #2c3e50;
     left: 0;
     bottom: 0;
-    background-color: #d4d4d4;
+    background-color: #d8d7d7;
     font-size: 2rem;
     border: none;
     border-radius: 4px;
@@ -83,6 +84,16 @@ body {
     padding: 0.5rem;
     transition: background-color 0.5s ease;
 }
+
+#previous-quote-button:hover {
+    color: #2980b9;
+}
+
+#previous-quote-button:active {
+    color: #2980b9;
+    transform: scale(1.25);
+}
+
 
 /* generate quote button styling */
 #generate-quote-button {
@@ -96,7 +107,6 @@ body {
     transition: background-color 0.5s ease;
 }
 
-
 /* add hover and active effects for buttons */
 #generate-quote-button:hover {
     background-color: #2981bb;
@@ -105,15 +115,6 @@ body {
 #generate-quote-button:active {
     background-color: #2981bb;
     transform: scale(0.98);
-}
-
-#previous-quote-button:hover {
-    color: #2980b9;
-}
-
-#previous-quote-button:active {
-    color: #2980b9;
-    transform: scale(1.25);
 }
 
 
