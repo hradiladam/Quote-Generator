@@ -143,8 +143,32 @@ const saveQuoteButton = document.getElementById('save-quote-button');
 saveQuoteButton.addEventListener('click', saveQuote); // Add event listener for the save button
 
 
+/*
+Function that deletes saved quotes
+*/
 
-/* Function that downloads saved quotes as a txt file */
+const deleteSavedQuotes = () => {
+    if (savedQuotes.length > 0) {
+        savedQuotes = [];
+        alert('All saved quotes have been deleted.');
+    } else {
+        alert('There are no saved quotes to delete.');
+    }
+};
+
+
+const deleteButton = document.getElementById('delete-saved-quotes-button');
+deleteButton.addEventListener('click', deleteSavedQuotes);
+
+
+
+
+
+/* 
+Function that downloads saved quotes as a txt file 
+THIS FUNCTION IS SOMETHING I HAVEN'T LEARN YET - USED CHATGPT FOR THIS FUNCTION
+*/
+
 const downloadSavedQuotes = () => {
     if (savedQuotes.length === 0) {
         alert('There are no saved quotes to download.');
@@ -153,16 +177,14 @@ const downloadSavedQuotes = () => {
 
     let fileContent = savedQuotes.map(quote => `${quote.author} ${quote.quote}`).join('\n');  // Create the text content for the file
 
-    // Create a Blob object with the file content
-    const blob = new Blob([fileContent], { type: 'text/plain' });
+    const blob = new Blob([fileContent], { type: 'text/plain' }); // Create a Blob object with the file content
 
     // Create an anchor element to trigger the download
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'saved-quotes.txt';  // Set the file name for the download
 
-    // Programmatically click the link to start the download
-    link.click();
+    link.click();  // Programmatically click the link to start the download
 };
 
 const downloadButton = document.getElementById('download-saved-quotes-button');

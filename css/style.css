@@ -6,7 +6,7 @@
 
 /* Body and background */
 body {
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 0.3s, color 0.3s;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -49,9 +49,7 @@ body {
     color: #1d1d1d;
     margin-bottom: 2.5rem;
     line-height: 1.5;
-    height: 90px;  /* Set a fixed height */
-    overflow-y: auto;  /* Enable vertical scrolling if content overflows */
-    padding-right: 10px; /* Optional: add space for the scrollbar */
+    min-height: 90px; 
 }
 
 /* Author styling */
@@ -219,7 +217,7 @@ body.dark-theme .additional-buttons:active {
 
 body.dark-theme #theme-switch {
     background-color: rgba(245, 245, 245, 0.1);
-    color: #dadada;
+    color: #dac50a;
 }
 
 body.dark-theme #theme-switch:hover {
@@ -257,10 +255,12 @@ body.dark-theme #theme-switch:active {
     #quote-display {
         font-size: 1.3rem;
         margin-bottom: 2.5rem;
+        min-height: 3rem;
     }
 
     #generate-quote-button {
         font-size: 1.4rem;
+        margin-bottom: 0;
     }
 
     .additional-buttons {
@@ -276,13 +276,24 @@ body.dark-theme #theme-switch:active {
     }
 
     .generate-button-container {
-        margin-bottom: 3rem;
+        margin-bottom: 1.1rem;
     }
+
+    .additional-buttons-container {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
+
 }
 
 /* Phone in landscape styling */ 
 
-@media (max-width: 767px) and (min-width: 600px) and (orientation: landscape) {
+@media (max-width: 767px) and (orientation: landscape) {
 
     body {
         flex-direction: column;
@@ -312,7 +323,7 @@ body.dark-theme #theme-switch:active {
     }
 
     #generate-quote-button {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     #theme-switch {
@@ -326,6 +337,16 @@ body.dark-theme #theme-switch:active {
     .generate-button-container {
         margin-bottom: 3rem;
     }
+
+    .additional-buttons-container {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 
@@ -334,7 +355,7 @@ body.dark-theme #theme-switch:active {
 @media (max-width: 599px) {
 
     body {
-        padding: 1rem;
+        padding: 1.3rem;
     }
     .quote-container {
         padding: 1rem;
@@ -353,22 +374,30 @@ body.dark-theme #theme-switch:active {
     }
 
     #generate-quote-button {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 
     #theme-switch {
-        bottom: 1rem;
-        right: 1rem;
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         width: 3.5rem;
         height: 3.5rem;
     }
 
+    .additional-buttons-container {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
+
     .additional-buttons {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .generate-button-container {
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
 }
