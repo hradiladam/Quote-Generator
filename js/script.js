@@ -1,51 +1,51 @@
 /*
 Fetches and processes the quotes from a txt file.
- - normalizes curly quotes to straight quotes
- - splits the text into author and quote
- - trims whitespace around the author and quote
- - adds straight quotes if they are missing in txt
- - adds a colon back to the author and filters lines without a colon
- - returns an array of objects with .author and .quote properties
- - filters away (ignores) lines that are missing a colon
+ - Normalizes curly quotes to straight quotes
+ - Splits the text into author and quote
+ - Trims whitespace around the author and quote
+ - Adds straight quotes if they are missing in txt
+ - Adds a colon back to the author and filters lines without a colon
+ - Returns an array of objects with .author and .quote properties
+ - Filters away (ignores) lines that are missing a colon
  */
 
 let selectionOfQuotes = [];
 
 const fetchData = async () => {
     try {
-        // fetch the quotes from the text file
+        // Fetch the quotes from the text file
         const response = await fetch('./assets/quotes.txt');
         if (!response.ok) {
             throw new Error ('Response was not ok. Please check the file path.');
         }
         
         let normalizedData = (await response.text())
-            .replace(/[\u201C\u201D]/g, '"') // normalize curly double quotes
-            .replace(/[\u2018\u2019]/g, "'"); // normalize curly single quotes
+            .replace(/[\u201C\u201D]/g, '"') // Normalize curly double quotes
+            .replace(/[\u2018\u2019]/g, "'"); // Normalize curly single quotes
 
         selectionOfQuotes = normalizedData
-            .split('\n') // split data into lines
-            .map(line => {  // process each line
+            .split('\n') // Split data into lines
+            .map(line => {  // Process each line
 
-            // only process lines that have a colon
+            // Only process lines that have a colon
             if (line.includes(':')) {
-                let [author, quote] = line.split(':'); // split line by the colon into 'author' and 'quote' 
+                let [author, quote] = line.split(':'); // Split line by the colon into 'author' and 'quote' 
 
-                // trim whitespaces
+                // Trim whitespaces
                 author = author.trim();
                 quote = quote.trim();
 
-                // add " if missing in the txt file
+                // Add " if missing in the txt file
                 quote = quote.startsWith('"') ? quote : `"${quote}`;
                 quote = quote.endsWith('"') ? quote : `${quote}"`;
 
-                author = `${author}:`; // add colon back to 'author'
+                author = `${author}:`; // Add colon back to 'author'
 
-                return {author, quote}; // return an array of objects with the author and the quote as properties
+                return {author, quote}; // Return an array of objects with the author and the quote as properties
             }
             return null;
 
-        }).filter(item => item !== null); // skip the lines not including the original colon in the txt file   
+        }).filter(item => item !== null); // Skip the lines not including the original colon in the txt file   
 
         console.log(selectionOfQuotes);
 
@@ -60,8 +60,8 @@ fetchData();
 
 /*
 Generates a random quote and displays it in the quote container
-- ensures the same quote doesn't appear consecutively
-- stored the quote from previous cycle for future use
+- Ensures the same quote doesn't appear consecutively
+- Stored the quote from previous cycle for future use
 */
 
 let lastQuote = null;
@@ -71,15 +71,15 @@ const generateQuote = () => {
     let randomNum;
     let newQuote;
     
-    // select a new quote and make sure it's not repeated
+    // Select a new quote and make sure it's not repeated
     do {
         randomNum = Math.floor(Math.random() * selectionOfQuotes.length);
         newQuote = selectionOfQuotes[randomNum];
     } while (newQuote === lastQuote);
 
-    previousQuote = lastQuote; // store the quote from previous cycle as previous quote
+    previousQuote = lastQuote; // Store the quote from previous cycle as previous quote
 
-    // display the selected quote in the display container element as 3 span elements (author, whitespace, quote)
+    // Display the selected quote in the display container element as 3 span elements (author, whitespace, quote)
     document.getElementById('quote-display').innerHTML = `
     <span class="author">${newQuote.author}</span>
     <span> </span>
@@ -95,7 +95,7 @@ generateQuoteButton.addEventListener('click', generateQuote); // add a click eve
 
 /*
 Function that displays the previous quote in the quote display
-- goe sonly back one quote to the previous quote
+- Goes only back one quote to the previous quote
 */
 
 const showPreviosuQuote = () => {
@@ -119,15 +119,16 @@ Toggles between light and dark themes
 
 const switchTheme = () => {
     const body = document.body;
-    const themeSwitchCheckbox = document.querySelector('#theme-switch input');  // get the theme switch checkbox
+    const themeSwitchButton = document.querySelector('#theme-switch');  // Get the theme switch button
 
-    // add and remove the dark-theme class to and from the body
-    if (themeSwitchCheckbox.checked ) {
-        body.classList.add('dark-theme');
+    body.classList.toggle('dark-theme')
+    // Add and remove the dark-theme class to and from the body
+    if (body.classList.contains('dark-theme')) {
+        themeSwitchButton.innerHTML = '<i class="fa-regular fa-sun"></i>';
     } else {
-        body.classList.remove('dark-theme');
+        themeSwitchButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
     }
 };
 
-const switchThemeButton = document.getElementById('theme-switch')
-switchThemeButton.addEventListener('change', switchTheme); // add a change event listener to the switch-theme toggle checkbox
+const themeSwitchButton = document.getElementById('theme-switch');
+themeSwitchButton.addEventListener('click', switchTheme); // Add a change event listener to the theme-switch
