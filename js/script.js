@@ -131,10 +131,10 @@ const saveQuote = () => {
         });
 
         if (isDuplicate) {
-            alert('This quote has already been saved') // Checks for duplicate and alerts if one is found
+            alert('This quote has already been saved before.') // Checks for duplicate and alerts if one is found
         } else {
             savedQuotes.push(savedQuote); // Save the quote to the savedQuotesArray
-            alert('savedQuotes');
+            alert('The quote has been saved.');
         }
     }
 }
