@@ -113,6 +113,63 @@ const previousQuoteButton = document.getElementById('previous-quote-button');
 previousQuoteButton.addEventListener('click', showPreviosuQuote); 
 
 
+/* 
+Function to save a displayed quote to memory
+*/
+let savedQuotes =[];
+
+const saveQuote = () => {
+    const quoteDisplay = document.getElementById('quote-display');
+    const author = quoteDisplay.querySelector('.author').textContent;
+    const quote = quoteDisplay.querySelector('.quote').textContent;
+
+    if (author && quote) {
+        const savedQuote = { author, quote }; // Creates a new quote object to save
+
+        const isDuplicate = savedQuotes.some((saved) => {
+            return saved.author === savedQuote.author && saved.quote === savedQuote.quote;
+        });
+
+        if (isDuplicate) {
+            alert('This quote has already been saved') // Checks for duplicate and alerts if one is found
+        } else {
+            savedQuotes.push(savedQuote); // Save the quote to the savedQuotesArray
+            alert('savedQuotes');
+        }
+    }
+}
+
+const saveQuoteButton = document.getElementById('save-quote-button');
+saveQuoteButton.addEventListener('click', saveQuote); // Add event listener for the save button
+
+
+
+/* Function that downloads saved quotes as a txt file */
+const downloadSavedQuotes = () => {
+    if (savedQuotes.length === 0) {
+        alert('There are no saved quotes to download.');
+        return; // Exits the function early if there are no quotes to download
+    }
+
+    let fileContent = savedQuotes.map(quote => `${quote.author} ${quote.quote}`).join('\n');  // Create the text content for the file
+
+    // Create a Blob object with the file content
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+
+    // Create an anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'saved-quotes.txt';  // Set the file name for the download
+
+    // Programmatically click the link to start the download
+    link.click();
+};
+
+const downloadButton = document.getElementById('download-saved-quotes-button');
+downloadButton.addEventListener('click', downloadSavedQuotes); // Add event listener for the download button
+
+
+
 /*
 Toggles between light and dark themes
 */
