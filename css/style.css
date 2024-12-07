@@ -24,7 +24,7 @@ body {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 3px #505050;
-    max-width: 1200px;
+    max-width: 950px;
     width: 100%;
     text-align: center;
     display: flex;
@@ -136,7 +136,7 @@ body {
 /* Styling of the change theme button  */
 #theme-switch {
     position: fixed;
-    bottom: 2rem;
+    top: 2rem;
     right: 2rem;
     width: 4.5rem;
     height: 4.5rem;
@@ -222,7 +222,7 @@ body.dark-theme #theme-switch {
 
 body.dark-theme #theme-switch:hover {
     background-color: rgba(245, 245, 245, 0.2);
-    color: #dac50a;
+    color: #c5ba5a;
 }
 
 body.dark-theme #theme-switch:active {
@@ -268,8 +268,10 @@ body.dark-theme #theme-switch:active {
     }
 
     #theme-switch {
-        bottom: 1.5rem;
-        right: 1.5rem;
+        position: fixed;
+        top: auto;
+        right: 2rem;
+        bottom: 3rem;
         font-size: 2.2rem;
         width: 4rem;
         height: 4rem;
@@ -291,72 +293,14 @@ body.dark-theme #theme-switch:active {
 
 }
 
-/* Phone in landscape styling */ 
-
-@media (max-width: 767px) and (orientation: landscape) {
-
-    body {
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 2.5rem;
-    }
-
-    .quote-container {
-        padding: 1rem;
-        max-width: 700px;
-    }
-
-    .quote-container h1 {
-        font-size: 1.6rem;
-        margin-top: 0.5rem;
-        margin-bottom: 1.8rem;
-    }
-
-    #quote-display {
-        font-size: 1.2rem;
-        margin-bottom: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .additional-buttons {
-        font-size: 1.4rem;
-    }
-
-    #generate-quote-button {
-        font-size: 1.2rem;
-    }
-
-    #theme-switch {
-        bottom: 1rem;
-        right: 1rem;
-        font-size: 2.4rem;
-        width: 3.3rem;
-        height: 3.3rem;
-    }
-
-    .generate-button-container {
-        margin-bottom: 3rem;
-    }
-
-    .additional-buttons-container {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        position: relative;
-        bottom: 0;
-        left: 0;
-    }
-}
-
-
 /* Phone in portrait styling */ 
 
-@media (max-width: 599px) {
+@media (max-width: 600px) {
 
     body {
         padding: 1.3rem;
     }
+
     .quote-container {
         padding: 1rem;
     }
@@ -378,9 +322,14 @@ body.dark-theme #theme-switch:active {
     }
 
     #theme-switch {
-        font-size: 2.3rem;
-        width: 3.5rem;
-        height: 3.5rem;
+        position: fixed;
+        top: auto;
+        right: 2rem;
+        bottom: 2rem;
+        font-size: 2.2rem;
+        width: 4rem;
+        height: 4rem;
+        z-index: 1000;
     }
 
     .additional-buttons-container {
