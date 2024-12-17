@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f8f6f6;
+    background: linear-gradient(145deg, #f3f4f5, #dee1e4);
     color: #333;
     position: relative;
 }
@@ -49,7 +49,7 @@ body {
     color: #1d1d1d;
     margin-bottom: 2.5rem;
     line-height: 1.5;
-    min-height: 90px; 
+    min-height: 100px; 
 }
 
 /* Author styling */
@@ -83,15 +83,15 @@ body {
 /* Hover effects for generate quote button */
 #generate-quote-button:hover {
     background-color: #2981bb;
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
 }
 
 /* Active effects for generate quote button */
 #generate-quote-button:active {
     background-color: #2981bb;
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
+    transform: scale(0.97);
+    transition: transform 0.2s ease;
 }
 
 /* Additional buttons container styling  */
@@ -169,7 +169,7 @@ body {
 /* Dark theme styles */
 
 body.dark-theme {
-    background-color: #242424;
+    background: linear-gradient(145deg, #2b2b2b, #111111);
     color: #f5f5f5;
 }
 
@@ -190,16 +190,16 @@ body.dark-theme .author {
 }
 
 body.dark-theme #generate-quote-button {
-    background-color: #2667a0;
+    background-color: #236e62;
     color: #eeeeee;
 }
 
 body.dark-theme #generate-quote-button:hover {
-    background-color: #2b76b8;
+    background-color: #428f82;
 }
 
 body.dark-theme #generate-quote-button:active {
-    background-color: #2b76b8;
+    background-color: #428f82;
 }
 
 body.dark-theme .additional-buttons {
