@@ -22,6 +22,17 @@ Generates a random quote and displays it in the quote container.
 
 let lastQuote = null;
 
+
+//Updates the quote display container with the provided author and quote.
+const updateQuoteDisplay = ({ author, quote }) => {
+    document.getElementById('quote-display').innerHTML = `
+        <span class="author">${author}</span>
+        <span> </span>
+        <span class="quote">${quote}</span>
+    `;
+};
+
+
 // Select a new quote and make sure it's not repeated
 const generateQuote = () => {
     let randomNum;
@@ -33,9 +44,7 @@ const generateQuote = () => {
     } while (newQuote === lastQuote);
 
     const [author, quote] = newQuote.split(": ");
-
-    document.getElementById('quote-display').innerHTML = 
-    `<span class="author">${author}: </span><span class="quote">${quote}</span>`;
+    updateQuoteDisplay({ author, quote });
 
     lastQuote = newQuote;  // Set the current quote as the last quote
 };
