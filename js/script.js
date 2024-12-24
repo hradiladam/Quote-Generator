@@ -142,6 +142,19 @@ const saveQuoteButton = document.getElementById('save-quote-button');
 saveQuoteButton.addEventListener('click', saveQuote); // Add event listener for the save button
 
 
+// Function to delete saved quotes
+const deleteSavedQuotes = () => {
+    if (savedQuotes.length > 0) {
+        savedQuotes = [];
+        (alert('All saved quotes have been deleted.'));
+    } else {
+        alert('There are no saved quotes to delete.');
+    }
+};
+
+const deleteButton = document.getElementById('delete-saved-quotes-button');
+deleteButton.addEventListener('click', deleteSavedQuotes);
+
 // Toggles between light and dark themes
 const switchTheme = () => {
     const body = document.body;
