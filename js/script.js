@@ -1,26 +1,64 @@
-const quoteSelection = [
-    "Richard Feynman (Physicist): “The first principle is that you must not fool yourself, and you are the easiest person to fool.”",
-    "Maya Angelou (Poet and Activist): “Do the best you can until you know better. Then when you know better, do better.”",
-    "Socrates (Philosopher): “The only true wisdom is in knowing you know nothing.”",
-    "Oscar Wilde (Playwright and Poet): “Be yourself; everyone else is already taken.”",
-    "Heraclitus (Philosopher): “No man ever steps in the same river twice, for it's not the same river and he's not the same man.”",
-    "Richard Feynman (Physicist): “I would rather have questions that can't be answered than answers that can't be questioned.”",
-    "Neil Degrasse Tyson (Astrophysicist): “We are stardust brought to life, then empowered by the universe to figure itself out — and we have only just begun.”",
-    "George Bernard Shaw (Playwright): “Life isn't about finding yourself. Life is about creating yourself.”",
-    "Rober Downey Jr. (Actor): 'Listen, smile, agree and then do whatever the fuck you were going to do anyway.'",
-    "Isaac Asimov (Writer and Biochemist): “The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom.”",
-    "Leonardo da Vinci (Polymath): “Simplicity is the ultimate sophistication.”",
-    "Voltaire (Philosopher): “Judge a man by his questions rather than his answers.”",
-    "James Baldwin (Writer and Activist): “Not everything that is faced can be changed, but nothing can be changed until it is faced.”"
-];
-
-
 /*
-Generates a random quote and displays it in the quote container.
- - Ensures the same quote doesn't appear consecutively.
+Fetches and processes the quotes from a text file.
+ - Normalizes curly quotes to straight quotes
+ - Splits the text into author and quote
+ - Trims whitespace around the author and quote
+ - Adds straight quotes if they are missing in txt
+ - Adds a colon back to the author
+ - Returns an array of objects with author and quote properties
+ - Filters away (ignores) lines that are missing a colon
 */
 
-let lastQuote = null;
+let quoteSelection = [];
+
+const fetchData = async () => {
+    try {
+        // Fetch the quotes from the text file
+        const response = await fetch('./assets/quotes.txt');
+        if (!response.ok) {
+            throw new Error ('Response was not ok. Please check the file path.');
+        }
+         
+        let normalizedData = (await response.text())
+            .replace(/[\u201C\u201D]/g, '"') // Normalize curly double quotes
+            .replace(/[\u2018\u2019]/g, "'"); // Normalize curly single quotes
+ 
+            quoteSelection = normalizedData
+            .split('\n') // Split data into lines
+            .map(line => {  // Process each line
+            
+            // Only process lines that have a colon
+            if (line.includes(':')) {
+                let [author, quote] = line.split(':'); // Split line by the colon into 'author' and 'quote' 
+ 
+                // Trim whitespaces
+                author = author.trim();
+                quote = quote.trim();
+ 
+                // Add " if missing in the text file
+                quote = quote.startsWith('"') ? quote : `"${quote}`;
+                quote = quote.endsWith('"') ? quote : `${quote}"`;
+ 
+                author = `${author}:`; // Add colon back to 'author'
+ 
+                return {author, quote}; // Return an array of objects with the author and the quote as properties
+            }
+            return null;
+ 
+        }).filter(item => item !== null); // Skip the lines not initially including colon in the text file   
+    
+ 
+        console.log(quoteSelection);
+ 
+    } catch (error) {
+        console.error('There was a problem fetching data:', error);
+    }
+};
+ 
+fetchData(); // Fetches data from the text file
+
+
+let lastQuote = null;  // Stores the last displayed quote
 
 
 //Updates the quote display container with the provided author and quote.
@@ -31,24 +69,30 @@ const updateQuoteDisplay = ({ author, quote }) => {
         <span class="quote">${quote}</span>
     `;
 };
+updateQuoteDisplay
 
 
-// Select a new quote and make sure it's not repeated
+/*
+Generates a random quote and displays it in the quote container.
+ - Ensures the same quote doesn't appear consecutively.
+*/
+
 const generateQuote = () => {
     let randomNum;
     let newQuote;
-
+    
+    // Select a new quote and make sure it's not repeated
     do {
         randomNum = Math.floor(Math.random() * quoteSelection.length);
         newQuote = quoteSelection[randomNum];
     } while (newQuote === lastQuote);
 
-    const [author, quote] = newQuote.split(": ");
-    updateQuoteDisplay({ author, quote });
-
     lastQuote = newQuote;  // Set the current quote as the last quote
+
+    const { author, quote } = newQuote;
+    updateQuoteDisplay({ author, quote });
 };
 
 // Add event listener for the "Generate Quote" button
 const generateQuoteButton = document.getElementById('generate-quote-button');
-generateQuoteButton.addEventListener('click', generateQuote); 
+generateQuoteButton.addEventListener('click', generateQuote);
