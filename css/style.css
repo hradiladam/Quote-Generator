@@ -86,3 +86,11 @@ body {
     transform: scale(0.97);
     transition: transform 0.2s ease;
 }
+
+/* Author styling */
+.author {
+    font-weight: 800;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    color: #2c3e50;
+}
