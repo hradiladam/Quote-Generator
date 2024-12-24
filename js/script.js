@@ -96,3 +96,21 @@ const generateQuote = () => {
 // Add event listener for the "Generate Quote" button
 const generateQuoteButton = document.getElementById('generate-quote-button');
 generateQuoteButton.addEventListener('click', generateQuote);
+
+
+// Toggles between light and dark themes
+const switchTheme = () => {
+    const body = document.body;
+    const themeSwitchButton = document.querySelector('#theme-switch');  // Get the theme switch button
+
+    body.classList.toggle('dark-theme')
+    // Add and remove the dark-theme class to and from the body
+    if (body.classList.contains('dark-theme')) {
+        themeSwitchButton.innerHTML = '<i class="fa-regular fa-sun"></i>';
+    } else {
+        themeSwitchButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+};
+
+const themeSwitchButton = document.getElementById('theme-switch');
+themeSwitchButton.addEventListener('click', switchTheme); // Add a change event listener to the theme-switch
