@@ -155,6 +155,30 @@ const deleteSavedQuotes = () => {
 const deleteButton = document.getElementById('delete-saved-quotes-button');
 deleteButton.addEventListener('click', deleteSavedQuotes);
 
+
+// Function that downloads saved quotes as a txt file
+const downloadSavedQuotes = () => {
+    if (savedQuotes.length === 0) {
+        alert('There are no saved quotes to download.');
+        return; // Exits the function early if there are no quotes to download
+    }
+
+    let fileContent = savedQuotes.map(quote => `${quote.author} ${quote.quote}`).join('\n');  // Create the text content for the file
+
+    const blob = new Blob([fileContent], { type: 'text/plain' }); // Create a Blob object with the file content
+
+    // Create an anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'saved-quotes.txt';  // Set the file name for the download
+
+    link.click();  // Programmatically click the link to start the download
+};
+
+const downloadButton = document.getElementById('download-saved-quotes-button');
+downloadButton.addEventListener('click', downloadSavedQuotes); // Add event listener for the download button
+
+
 // Toggles between light and dark themes
 const switchTheme = () => {
     const body = document.body;
