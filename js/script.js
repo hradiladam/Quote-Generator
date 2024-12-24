@@ -113,6 +113,35 @@ const previousQuoteButton = document.getElementById('previous-quote-button');
 previousQuoteButton.addEventListener('click', showPreviousQuote);
 
 
+// Function to save a displayed quote to memory
+let savedQuotes = [];
+
+const saveQuote = () => {
+    const quoteDisplay = document.getElementById('quote-display');
+    const author = quoteDisplay.querySelector('.author').textContent;
+    const quote = quoteDisplay.querySelector('.quote').textContent;
+
+    if (author && quote) {
+        const savedQuote = { author, quote } // Creates a new object to save
+
+        const isDuplicate = savedQuotes.some((saved) => {
+            return saved.author === savedQuote.author && saved.quote === savedQuote.quote;
+        });
+
+        // Checks for duplicate and alerts if one is found
+        if (isDuplicate) {
+            alert('This quote has already been saved before.') 
+        } else {
+            savedQuotes.push(savedQuote); // Save the quote to the savedQuotesArray
+            alert('The quote has been saved.');
+        }
+    };
+};
+
+const saveQuoteButton = document.getElementById('save-quote-button');
+saveQuoteButton.addEventListener('click', saveQuote); // Add event listener for the save button
+
+
 // Toggles between light and dark themes
 const switchTheme = () => {
     const body = document.body;
