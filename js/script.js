@@ -59,6 +59,7 @@ fetchData(); // Fetches data from the text file
 
 
 let lastQuote = null;  // Stores the last displayed quote
+let previousQuote = null;  // Stores the previous quote
 
 
 //Updates the quote display container with the provided author and quote.
@@ -87,6 +88,7 @@ const generateQuote = () => {
         newQuote = quoteSelection[randomNum];
     } while (newQuote === lastQuote);
 
+    previousQuote = lastQuote; // Store the current last quote as the previous quote
     lastQuote = newQuote;  // Set the current quote as the last quote
 
     const { author, quote } = newQuote;
@@ -96,6 +98,19 @@ const generateQuote = () => {
 // Add event listener for the "Generate Quote" button
 const generateQuoteButton = document.getElementById('generate-quote-button');
 generateQuoteButton.addEventListener('click', generateQuote);
+
+
+// Displays the previous quote.
+const showPreviousQuote = () => {
+    if (previousQuote) {
+        const { author, quote } = previousQuote;
+        updateQuoteDisplay({ author, quote });
+    }
+};
+
+// Add event listener for the "Previous Quote" button
+const previousQuoteButton = document.getElementById('previous-quote-button');
+previousQuoteButton.addEventListener('click', showPreviousQuote);
 
 
 // Toggles between light and dark themes
