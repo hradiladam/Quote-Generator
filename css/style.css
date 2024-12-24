@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and background */
+body {
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #fafafa, #e7e7e7);
+    color: #333;
+    position: relative;
+}
+
+/* Main container for the content */
+.quote-container {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: #e0e0e0;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #525252;
+    max-width: 950px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Heading styling */
+.quote-container h1 {
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Styling for the quote text */
+#quote-display {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #1d1d1d;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    min-height: 100px; 
+}
+
+/* Quote buttons styling */
+.generate-button-container {
+    width: 100%;
+    transition: background-color 0.5s ease;
+}
+
+/* Generate quote button styling */
+#generate-quote-button {
+    background-color: #338fcc;
+    color: white;
+    font-size: 1.9rem;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.5s ease;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem;
+}
+
+/* Hover effects for generate quote button */
+#generate-quote-button:hover {
+    background-color: #2981bb;
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
+}
+
+/* Active effects for generate quote button */
+#generate-quote-button:active {
+    background-color: #2981bb;
+    transform: scale(0.97);
+    transition: transform 0.2s ease;
+}
