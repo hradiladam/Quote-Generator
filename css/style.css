@@ -226,3 +226,85 @@ body.dark-theme .additional-buttons:hover {
 body.dark-theme .additional-buttons:active {
     color: #346ea5;
 }
+
+/* Media Query for Phone Size*/
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+        padding: 0 1rem;
+    }
+
+    .quote-container {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .quote-container h1 {
+        font-size: 1.8rem;
+        margin-top: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #quote-display {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .author {
+        font-size: 1.2rem;
+    }
+
+    #generate-quote-button {
+        font-size: 1.5rem;
+        padding: 10px 18px;
+        margin-bottom: 3rem;
+    }
+
+    #generate-quote-button:hover {
+        transform: scale(1.05);
+    }
+
+    .additional-buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .additional-buttons {
+        color: #303233;
+        background-color: transparent;
+        font-size: 1.3rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+        padding: 4px 4px;
+    }
+    
+    .additional-buttons:hover {
+        color: #2980b9;
+        transform: scale(1.1);
+        transition: transform 0.25s ease;
+    }
+    
+    .additional-buttons:active {
+        color: #2980b9;
+        transform: scale(0.9);
+        transition: transform 0.25s ease;
+    }
+
+    #theme-switch {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem;
+    }
+}
